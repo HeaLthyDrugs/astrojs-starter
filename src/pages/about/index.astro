@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/main.astro"
+import { SITE } from "@/lib/site"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Briefcase01Icon from "@hugeicons/core-free-icons/Briefcase01Icon"
 import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
@@ -154,8 +155,7 @@ const bestFitProjects = [
           Building useful digital products with a clear, focused approach.
         </h1>
         <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          AstroStarter helps businesses turn practical ideas into clean websites, web apps,
-          dashboards, and MVPs that are easy to understand and ready to grow.
+          {SITE.copy.aboutIntro}
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <a

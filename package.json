@@ -24,6 +24,8 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
     "typecheck": "astro check",
+    "smoke": "node scripts/route-smoke.mjs",
+    "verify": "pnpm lint && pnpm typecheck && pnpm build && pnpm smoke",
     "generate-types": "wrangler types",
     "deploy": "pnpm run build && wrangler deploy"
   },

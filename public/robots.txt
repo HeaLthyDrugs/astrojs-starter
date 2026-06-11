@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://astrostarter.com/sitemap-index.xml

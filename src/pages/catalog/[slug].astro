@@ -49,6 +49,7 @@ const complexityMeta = COMPLEXITY_META[data.complexity]
             "@type": "ListItem",
             position: 2,
             name: data.title,
+            item: `${SITE.url}/catalog/${item.id}`,
           },
         ],
       },
@@ -242,7 +243,7 @@ const complexityMeta = COMPLEXITY_META[data.complexity]
         title={`Build your ${data.title.toLowerCase()} with clarity.`}
         benefits={["Tailored scoping", "Fast next steps", "Clear priorities"]}
         panelTitleLineOne={`Interested in ${data.title.toLowerCase()}?`}
-        panelTitleLineTwo="Let’s shape it together."
+        panelTitleLineTwo="Let's shape it together."
         primaryHref="/catalog"
         primaryLabel="More catalog items"
         secondaryHref="/contact"

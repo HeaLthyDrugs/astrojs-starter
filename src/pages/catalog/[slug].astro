@@ -1,0 +1,274 @@
+---
+import Layout from "@/layouts/main.astro"
+import CatalogCard from "@/components/catalog-card.astro"
+import FinalCTA from "@/components/sections/final-cta.astro"
+import { getCollection } from "astro:content"
+import type { CollectionEntry } from "astro:content"
+import { SITE } from "@/lib/site"
+import { HugeiconsIcon } from "@hugeicons/react"
+import ArrowLeft01Icon from "@hugeicons/core-free-icons/ArrowLeft01Icon"
+import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
+import Layers01Icon from "@hugeicons/core-free-icons/Layers01Icon"
+import Rocket01Icon from "@hugeicons/core-free-icons/Rocket01Icon"
+import UserGroupIcon from "@hugeicons/core-free-icons/UserGroupIcon"
+import { CATEGORY_META, COMPLEXITY_META, DEFAULT_CATEGORY_META } from "@/lib/catalog"
+
+export async function getStaticPaths() {
+  const items = await getCollection("catalog")
+  return items.map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }))
+}
+
+const { item } = Astro.props as { item: CollectionEntry<"catalog"> }
+const { data } = item
+const allItems = await getCollection("catalog")
+const related = allItems.filter((i) => i.data.category === data.category && i.id !== item.id)
+const categoryMeta = CATEGORY_META[data.category as keyof typeof CATEGORY_META] ?? DEFAULT_CATEGORY_META
+const complexityMeta = COMPLEXITY_META[data.complexity]
+---
+
+<Layout
+  seo={{
+    title: data.seoTitle ?? data.title,
+    description: data.seoDescription ?? data.shortDescription,
+    canonical: `/catalog/${item.id}`,
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Catalog",
+            item: `${SITE.url}/catalog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: data.title,
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: data.title,
+        description: data.description,
+        provider: {
+          "@type": "Organization",
+          name: SITE.name,
+          url: SITE.url,
+        },
+        serviceType: data.category,
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+        },
+      },
+    ],
+  }}
+>
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-12">
+    <article>
+      <a
+        href="/catalog"
+        class="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
+        <span>Back to catalog</span>
+      </a>
+
+      <section class="py-8 md:py-10">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_20rem] lg:items-start">
+          <div class="max-w-3xl">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <HugeiconsIcon icon={categoryMeta.icon} size={14} />
+                {data.category}
+              </span>
+              <span class="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
+                {data.complexity}
+              </span>
+              <span class="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
+                {data.timeline}
+              </span>
+            </div>
+
+            <h1 class="mt-5 text-4xl font-bold tracking-tight md:text-5xl">{data.title}</h1>
+            <p class="mt-5 max-w-3xl text-base leading-7 text-muted-foreground md:text-lg">
+              {data.description}
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="/contact"
+                class="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Start this project
+              </a>
+              <a
+                href="/services"
+                class="inline-flex h-11 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              >
+                See how we work
+              </a>
+            </div>
+          </div>
+
+          <aside class="rounded-2xl bg-muted/50 p-6">
+            <h2 class="text-base font-semibold tracking-tight">Project snapshot</h2>
+            <div class="mt-6 space-y-5">
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Best fit
+                </p>
+                <p class="mt-2 text-sm leading-6 text-foreground">{data.idealFor[0]}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Timeline
+                </p>
+                <p class="mt-2 text-sm leading-6 text-foreground">{data.timeline}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Complexity
+                </p>
+                <p class="mt-2 text-sm leading-6 text-foreground">{data.complexity}</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Included features
+                </p>
+                <p class="mt-2 text-sm leading-6 text-foreground">
+                  {data.features.length} commonly scoped items for the first release.
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="py-8 md:py-10">
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={categoryMeta.icon} size={18} />
+            </div>
+            <h2 class="mt-4 text-base font-semibold tracking-tight">{data.category}</h2>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{categoryMeta.description}</p>
+          </div>
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={complexityMeta.icon} size={18} />
+            </div>
+            <h2 class="mt-4 text-base font-semibold tracking-tight">{data.complexity} complexity</h2>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{complexityMeta.description}</p>
+          </div>
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={Rocket01Icon} size={18} />
+            </div>
+            <h2 class="mt-4 text-base font-semibold tracking-tight">{data.timeline}</h2>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+              Final timing depends on scope alignment, feedback cycles, and launch priorities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8 md:py-10">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <div class="max-w-xl">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={UserGroupIcon} size={18} />
+            </div>
+            <h2 class="mt-4 text-2xl font-semibold tracking-tight md:text-3xl">
+              Who this is ideal for
+            </h2>
+            <p class="mt-3 text-base leading-7 text-muted-foreground">
+              This scope works best for teams that want a practical launch plan with the right
+              priorities from the start.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {data.idealFor.map((ideal) => (
+              <div class="flex items-start gap-3 rounded-2xl bg-muted/40 p-4">
+                <div class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-background text-primary shadow-sm">
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} />
+                </div>
+                <p class="text-sm leading-6 text-muted-foreground">{ideal}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8 md:py-10">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <div class="max-w-xl">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={Layers01Icon} size={18} />
+            </div>
+            <h2 class="mt-4 text-2xl font-semibold tracking-tight md:text-3xl">
+              What is usually included
+            </h2>
+            <p class="mt-3 text-base leading-7 text-muted-foreground">
+              These are the core features commonly included when shaping this kind of product.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {data.features.map((feature) => (
+              <div class="flex items-start gap-3 rounded-2xl bg-muted/40 p-4">
+                <div class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-background text-primary shadow-sm">
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} />
+                </div>
+                <p class="text-sm leading-6 text-muted-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="pt-10">
+      <FinalCTA
+        eyebrow=""
+        title={`Build your ${data.title.toLowerCase()} with clarity.`}
+        benefits={["Tailored scoping", "Fast next steps", "Clear priorities"]}
+        panelTitleLineOne={`Interested in ${data.title.toLowerCase()}?`}
+        panelTitleLineTwo="Let’s shape it together."
+        primaryHref="/catalog"
+        primaryLabel="More catalog items"
+        secondaryHref="/contact"
+        secondaryLabel="Discuss this build"
+      />
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="py-12">
+          <div class="max-w-2xl">
+            <span class="text-sm font-medium text-muted-foreground">Related options</span>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+              More in {data.category}
+            </h2>
+            <p class="mt-3 text-base leading-7 text-muted-foreground">
+              Compare nearby options if you are still narrowing scope, complexity, or product direction.
+            </p>
+          </div>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((relatedItem) => (
+              <CatalogCard item={relatedItem} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</Layout>

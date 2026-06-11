@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/main.astro"
+import Hero from "@/components/sections/hero.astro"
+import CatalogPreview from "@/components/sections/catalog-preview.astro"
+import Services from "@/components/sections/services.astro"
+import Process from "@/components/sections/process.astro"
+import WhyCybotum from "@/components/sections/why-cybotum.astro"
+import FinalCTA from "@/components/sections/final-cta.astro"
+import { SITE } from "@/lib/site"
+---
+
+<Layout
+  seo={{
+    title: "Cybotum | Websites, Apps, Dashboards & SaaS MVPs",
+    description:
+      "Cybotum builds fast, clean, SEO-ready websites, web apps, dashboards, mobile app MVPs, and SaaS products for businesses.",
+    canonical: "/",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: SITE.name,
+        url: SITE.url,
+        description: SITE.description,
+        email: SITE.email,
+        sameAs: Object.values(SITE.social).filter(Boolean),
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: SITE.name,
+        url: SITE.url,
+        description: SITE.description,
+      },
+    ],
+  }}
+>
+  <Hero />
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <CatalogPreview />
+    <Services />
+    <Process />
+    <WhyCybotum />
+    <FinalCTA />
+  </div>
+</Layout>

@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content"
+import {
+  CATEGORY_META,
+  CATALOG_CARD_IMAGES,
+  COMPLEXITY_META,
+  DEFAULT_CATEGORY_META,
+} from "@/lib/catalog"
+
+export interface Props {
+  item: CollectionEntry<"catalog">
+}
+
+const { item } = Astro.props
+const { title, category, shortDescription, complexity, timeline } = item.data
+const categoryMeta = CATEGORY_META[category as keyof typeof CATEGORY_META] ?? DEFAULT_CATEGORY_META
+const complexityMeta = COMPLEXITY_META[complexity]
+const image =
+  CATALOG_CARD_IMAGES[item.id as keyof typeof CATALOG_CARD_IMAGES] ?? {
+    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+    alt: `${title} preview image`,
+    objectPosition: "center",
+  }
+---
+
+<article class="h-full">
+  <a
+    href={`/catalog/${item.id}`}
+    class="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/90 bg-white shadow-[0_14px_32px_rgba(15,23,42,0.06)] transition-colors duration-200 hover:border-slate-300"
+  >
+    <div class="relative aspect-[16/11] overflow-hidden rounded-[1.5rem] bg-slate-100">
+      <img
+        src={image.src}
+        alt={image.alt}
+        loading="lazy"
+        class="h-full w-full object-cover"
+        style={`object-position:${image.objectPosition};`}
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,rgba(255,255,255,0.02)_58%,rgba(15,23,42,0.06)_100%)]"></div>
+    </div>
+
+    <div class="flex flex-1 flex-col px-4 pb-4 pt-3.5 sm:px-5 sm:pb-5">
+      <div>
+        <p class="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-slate-500">
+          {categoryMeta.label}
+        </p>
+        <h2 class="mt-2 line-clamp-2 text-lg font-semibold tracking-tight text-slate-900 sm:text-[1.15rem] sm:leading-7">
+          {title}
+        </h2>
+        <p class="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">{shortDescription}</p>
+      </div>
+
+      <div class="mt-4 flex flex-col gap-2">
+        <div class="flex flex-wrap gap-2 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-slate-500">
+          <span class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-700">{complexity}</span>
+          <span class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-700">{timeline}</span>
+        </div>
+        <p class="text-sm leading-6 text-slate-500">{complexityMeta.description}</p>
+      </div>
+    </div>
+  </a>
+</article>

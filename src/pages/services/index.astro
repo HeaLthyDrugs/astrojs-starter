@@ -1,0 +1,241 @@
+---
+import Layout from "@/layouts/main.astro"
+import { HugeiconsIcon } from "@hugeicons/react"
+import AppWindowIcon from "@hugeicons/core-free-icons/AppWindowIcon"
+import ArrowRight01Icon from "@hugeicons/core-free-icons/ArrowRight01Icon"
+import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
+import DashboardSquare01Icon from "@hugeicons/core-free-icons/DashboardSquare01Icon"
+import Layers01Icon from "@hugeicons/core-free-icons/Layers01Icon"
+import MobileNavigator01Icon from "@hugeicons/core-free-icons/MobileNavigator01Icon"
+import Rocket01Icon from "@hugeicons/core-free-icons/Rocket01Icon"
+import ShoppingCart01Icon from "@hugeicons/core-free-icons/ShoppingCart01Icon"
+import WebProgrammingIcon from "@hugeicons/core-free-icons/WebProgrammingIcon"
+
+const services = [
+  {
+    title: "Website Development",
+    description:
+      "Fast, SEO-ready websites for businesses, portfolios, restaurants, clinics, agencies, and local brands.",
+    features: [
+      "Responsive layouts across devices",
+      "SEO-ready structure and metadata",
+      "Performance-focused frontend delivery",
+    ],
+    link: "/catalog",
+    icon: WebProgrammingIcon,
+  },
+  {
+    title: "Web App Development",
+    description:
+      "Interactive web apps with clean interfaces, practical workflows, and scalable frontend architecture.",
+    features: [
+      "Practical user flows",
+      "Custom product interfaces",
+      "Scalable frontend foundation",
+    ],
+    link: "/catalog",
+    icon: AppWindowIcon,
+  },
+  {
+    title: "SaaS MVP Development",
+    description:
+      "Lean MVPs for testing product ideas without overbuilding unnecessary features.",
+    features: [
+      "Focused launch scope",
+      "Core dashboards and onboarding",
+      "Built to iterate after release",
+    ],
+    link: "/catalog/saas-mvp",
+    icon: Rocket01Icon,
+  },
+  {
+    title: "Dashboard & Admin Panels",
+    description:
+      "Custom dashboards for managing data, users, operations, inventory, bookings, or internal workflows.",
+    features: [
+      "Reporting and operational views",
+      "Internal workflow support",
+      "Clean, focused interface design",
+    ],
+    link: "/catalog",
+    icon: DashboardSquare01Icon,
+  },
+  {
+    title: "Mobile App MVPs",
+    description:
+      "Mobile-first app prototypes and MVP interfaces for validating ideas before full-scale development.",
+    features: [
+      "Mobile-first product planning",
+      "Core journeys for testing",
+      "Validation-ready release scope",
+    ],
+    link: "/catalog/mobile-app-mvp",
+    icon: MobileNavigator01Icon,
+  },
+  {
+    title: "E-commerce Websites",
+    description:
+      "Clean online stores, product catalogs, checkout-ready layouts, and conversion-focused shopping experiences.",
+    features: [
+      "Storefront and catalog structure",
+      "Checkout-oriented user flows",
+      "Conversion-focused presentation",
+    ],
+    link: "/catalog/ecommerce-website",
+    icon: ShoppingCart01Icon,
+  },
+]
+
+const guidance = [
+  {
+    title: "Landing page",
+    description: "Best when the goal is a focused offer, campaign, or early validation page.",
+  },
+  {
+    title: "Full website",
+    description: "Best when the business needs more content, structure, and a complete online presence.",
+  },
+  {
+    title: "Dashboard or internal tool",
+    description: "Best when teams need better visibility, reporting, or workflow management.",
+  },
+  {
+    title: "SaaS MVP",
+    description: "Best when the product idea needs a lean but real version for launch and learning.",
+  },
+]
+---
+
+<Layout
+  seo={{
+    title: "Services | Cybotum",
+    description:
+      "Explore Cybotum's website development, web app development, SaaS MVP, dashboard, mobile app MVP, and e-commerce services.",
+    canonical: "/services",
+  }}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <HugeiconsIcon icon={Layers01Icon} size={14} />
+          Services
+        </span>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          Practical product services for businesses that want clarity, not noise.
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Cybotum builds websites, apps, dashboards, MVPs, and e-commerce experiences with a
+          simple goal: deliver something useful, readable, and ready to grow.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/catalog"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Explore Catalog
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">What we build</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          Services shaped around the most common product needs.
+        </h2>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => (
+          <div class="flex flex-col rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={service.icon} size={18} />
+            </div>
+            <h3 class="mt-4 text-base font-semibold tracking-tight">{service.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{service.description}</p>
+            <ul class="mt-5 space-y-3">
+              {service.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
+                  <span class="mt-0.5 text-primary">
+                    <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} />
+                  </span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-2">
+              <a
+                href={service.link}
+                class="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+              >
+                See in catalog
+                <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="max-w-xl">
+          <span class="text-sm font-medium text-muted-foreground">Choosing the right build</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Not every idea needs the biggest possible product.
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            The right service depends on what needs to happen first: explain an offer, launch a
+            product, improve internal operations, or validate a new business idea.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {guidance.map((item) => (
+            <div class="rounded-2xl bg-muted/50 p-5">
+              <h3 class="text-base font-semibold tracking-tight">{item.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-16">
+      <div class="rounded-3xl bg-muted/50 p-6 md:p-8">
+        <div class="max-w-2xl">
+          <span class="text-sm font-medium text-muted-foreground">Next step</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Not sure which service fits yet?
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            Start with the catalog or share the idea directly. The goal is to choose the simplest
+            useful path before any build starts.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/catalog"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Explore Catalog
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,142 @@
+---
+import { HugeiconsIcon } from "@hugeicons/react"
+import WebProgrammingIcon from "@hugeicons/core-free-icons/WebProgrammingIcon"
+import AppWindowIcon from "@hugeicons/core-free-icons/AppWindowIcon"
+import SmartPhone01Icon from "@hugeicons/core-free-icons/SmartPhone01Icon"
+import Rocket01Icon from "@hugeicons/core-free-icons/Rocket01Icon"
+import DashboardSquare01Icon from "@hugeicons/core-free-icons/DashboardSquare01Icon"
+import ShoppingCart01Icon from "@hugeicons/core-free-icons/ShoppingCart01Icon"
+import ArrowUpRight01Icon from "@hugeicons/core-free-icons/ArrowUpRight01Icon"
+
+const services = [
+  {
+    icon: WebProgrammingIcon,
+    title: "Website Development",
+    description:
+      "Business sites, landing pages, portfolios, and restaurant websites — responsive and built to perform.",
+    bgColor: "bg-blue-500/10",
+    textColor: "text-blue-500",
+    link: "/catalog",
+  },
+  {
+    icon: AppWindowIcon,
+    title: "Web App Development",
+    description:
+      "Custom web applications, booking systems, and SaaS platforms with clean architecture.",
+    bgColor: "bg-orange-400/10",
+    textColor: "text-orange-400",
+    link: "/catalog",
+  },
+  {
+    icon: SmartPhone01Icon,
+    title: "Mobile App MVPs",
+    description:
+      "Cross-platform mobile prototypes on iOS and Android to validate your idea fast.",
+    bgColor: "bg-teal-400/10",
+    textColor: "text-teal-400",
+    link: "/catalog",
+  },
+  {
+    icon: Rocket01Icon,
+    title: "SaaS MVP Development",
+    description:
+      "Lean, launch-ready SaaS products with auth, billing, and dashboard.",
+    bgColor: "bg-violet-500/10",
+    textColor: "text-violet-500",
+    link: "/catalog",
+  },
+  {
+    icon: DashboardSquare01Icon,
+    title: "Dashboard & Admin Panels",
+    description:
+      "Data-rich dashboards, admin panels, and internal tools for operations.",
+    bgColor: "bg-sky-400/10",
+    textColor: "text-sky-400",
+    link: "/catalog",
+  },
+  {
+    icon: ShoppingCart01Icon,
+    title: "E-commerce Builds",
+    description:
+      "Online stores with product management, cart, and secure checkout.",
+    bgColor: "bg-red-500/10",
+    textColor: "text-red-500",
+    link: "/catalog",
+  },
+]
+---
+
+<section class="bg-background py-16 md:py-20">
+  <div class="">
+    <div class="mx-auto max-w-7xl">
+
+      <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
+        Where innovation meets aesthetics
+      </h2>
+
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+        Cybotum builds across categories — from business websites to SaaS platforms and mobile app
+        prototypes. Each project gets the same focus on quality.
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-12 max-w-7xl">
+    <div class="flex flex-col items-center justify-center gap-8 sm:gap-16">
+
+      <div class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => (
+          <a
+            href={service.link}
+            class={`rounded-2xl p-8 ${service.bgColor} transition-colors hover:opacity-80`}
+          >
+            <div class="flex flex-col items-start justify-between gap-12 sm:gap-16">
+              <span class={service.textColor}>
+                <HugeiconsIcon icon={service.icon} size={32} />
+              </span>
+              <div>
+                <h3 class={`text-2xl font-medium ${service.textColor}`}>
+                  {service.title}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="flex w-full flex-col items-center gap-8 rounded-2xl border bg-gray-950 p-8">
+        <div class="w-full text-center">
+          <p class="text-2xl font-medium text-white">
+            See Our Work in Action.
+          </p>
+          <p class="text-2xl font-medium text-white">
+            Start Your Creative Journey with Us!
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-4 sm:flex-row">
+          <a
+            href="#"
+            class="group inline-flex h-12 w-fit cursor-pointer items-center gap-4 rounded-full bg-white p-1 ps-5 text-sm font-medium text-black hover:bg-white/90"
+          >
+            <span>Let's Collaborate</span>
+            <span class="flex size-8 items-center justify-center rounded-full bg-black text-white transition-transform duration-300 ease-in-out group-hover:rotate-45">
+              <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} />
+            </span>
+          </a>
+          <a
+            href="#"
+            class="group inline-flex h-12 w-fit cursor-pointer items-center gap-4 rounded-full border border-white/50 bg-gray-950 p-1 ps-5 text-sm font-medium text-white hover:bg-gray-950/90"
+          >
+            <span>View Portfolio</span>
+            <span class="flex size-8 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 ease-in-out group-hover:rotate-45">
+              <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} />
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

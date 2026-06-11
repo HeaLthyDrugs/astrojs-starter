@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/main.astro"
+---
+
+<Layout
+  seo={{
+    title: "Page Not Found | Cybotum",
+    description:
+      "The page you are looking for does not exist, or it may have been moved.",
+    noindex: true,
+  }}
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+  <section class="flex flex-col items-center justify-center gap-6 py-24 text-center md:py-32">
+    <h1 class="text-4xl font-bold tracking-tight md:text-5xl">Page not found.</h1>
+    <p class="max-w-md text-base leading-relaxed text-muted-foreground">
+      The page you are looking for does not exist, or it may have been moved.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/"
+        class="inline-flex h-10 items-center justify-center rounded-4xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
+      >
+        Back to Home
+      </a>
+      <a
+        href="/catalog"
+        class="inline-flex h-10 items-center justify-center rounded-4xl border bg-background px-6 text-sm font-medium transition-colors hover:bg-muted"
+      >
+        Explore Catalog
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex h-10 items-center justify-center rounded-4xl border bg-background px-6 text-sm font-medium transition-colors hover:bg-muted"
+      >
+        Contact Cybotum
+      </a>
+    </div>
+  </section>
+  </div>
+</Layout>

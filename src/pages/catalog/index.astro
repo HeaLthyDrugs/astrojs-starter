@@ -1,0 +1,212 @@
+---
+import Layout from "@/layouts/main.astro"
+import CatalogCard from "@/components/catalog-card.astro"
+import FinalCTA from "@/components/sections/final-cta.astro"
+import { getCollection } from "astro:content"
+import { HugeiconsIcon } from "@hugeicons/react"
+import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
+import Layers01Icon from "@hugeicons/core-free-icons/Layers01Icon"
+import Rocket01Icon from "@hugeicons/core-free-icons/Rocket01Icon"
+import { CATEGORY_META, DEFAULT_CATEGORY_META } from "@/lib/catalog"
+
+const catalogItems = await getCollection("catalog")
+const categories = [...new Set(catalogItems.map((item) => item.data.category))]
+const highlightedCategories = categories.map((category) => ({
+  category,
+  meta: CATEGORY_META[category as keyof typeof CATEGORY_META] ?? DEFAULT_CATEGORY_META,
+}))
+---
+
+<Layout
+  seo={{
+    title: "Catalog | Websites, Apps & Digital Products by Cybotum",
+    description:
+      "Browse Cybotum's catalog of websites, web apps, SaaS MVPs, dashboards, mobile app MVPs, landing pages, and e-commerce builds.",
+    canonical: "/catalog",
+  }}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <HugeiconsIcon icon={Layers01Icon} size={14} />
+          Product Catalog
+        </span>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          Browse proven digital products you can tailor to your business.
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Use the catalog to compare practical starting points for websites, web apps, dashboards,
+          mobile apps, and launch-ready MVPs.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl bg-muted/50 p-5">
+          <div class="flex size-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm">
+            <HugeiconsIcon icon={Layers01Icon} size={18} />
+          </div>
+          <h2 class="mt-4 text-base font-semibold tracking-tight">{catalogItems.length} scoped options</h2>
+          <p class="mt-2 text-sm leading-6 text-muted-foreground">
+            Each entry gives you a realistic baseline for features, complexity, and timeline.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-muted/50 p-5">
+          <div class="flex size-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm">
+            <HugeiconsIcon icon={CheckmarkCircle01Icon} size={18} />
+          </div>
+          <h2 class="mt-4 text-base font-semibold tracking-tight">{categories.length} product categories</h2>
+          <p class="mt-2 text-sm leading-6 text-muted-foreground">
+            From business websites to internal tools, the range stays broad but easy to scan.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-muted/50 p-5">
+          <div class="flex size-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm">
+            <HugeiconsIcon icon={Rocket01Icon} size={18} />
+          </div>
+          <h2 class="mt-4 text-base font-semibold tracking-tight">Built for quick decisions</h2>
+          <p class="mt-2 text-sm leading-6 text-muted-foreground">
+            Compare options fast, then choose the simplest useful direction before starting.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-6 md:py-8">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">Browse by category</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          Filter the catalog without losing the overall layout.
+        </h2>
+        <p class="mt-3 text-base leading-7 text-muted-foreground">
+          The product grid keeps a stable height while you move between categories, so the page
+          stays calm and easy to use.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter catalog by category">
+        <button
+          type="button"
+          data-filter="all"
+          class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted aria-pressed:bg-muted"
+          aria-pressed="true"
+        >
+          <span>All</span>
+        </button>
+        {highlightedCategories.map(({ category, meta }) => (
+          <button
+            type="button"
+            data-filter={category}
+            class="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground aria-pressed:bg-muted aria-pressed:text-foreground"
+            aria-pressed="false"
+          >
+            <HugeiconsIcon icon={meta.icon} size={16} />
+            <span>{category}</span>
+          </button>
+        ))}
+      </div>
+
+      <div
+        class="mt-8 min-h-[24rem] w-screen"
+        style="margin-left: calc(50% - 50vw);"
+        data-catalog-results
+      >
+        <div class="px-4 sm:px-6">
+          <div
+            class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+            data-catalog-grid
+          >
+            {catalogItems.map((item) => (
+              <div class="h-full" data-catalog-card data-category={item.data.category}>
+                <CatalogCard item={item} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">What you can expect</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          Every entry is meant to clarify scope, not lock you into a template.
+        </h2>
+      </div>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {highlightedCategories.slice(0, 3).map(({ category, meta }) => (
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={meta.icon} size={18} />
+            </div>
+            <h3 class="mt-4 text-base font-semibold tracking-tight">{category}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{meta.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <FinalCTA
+      eyebrow="Need a different kind of product?"
+      title="Use the catalog as a starting point."
+      benefits={["Custom feature planning", "Clear delivery scope", "Guidance before kickoff"]}
+      panelTitleLineOne="Need something custom?"
+      panelTitleLineTwo="We can shape it with you."
+      primaryHref="/services"
+      primaryLabel="See our services"
+      secondaryHref="/contact"
+      secondaryLabel="Discuss your project"
+    />
+  </div>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]")
+  const cards = document.querySelectorAll<HTMLElement>("[data-catalog-card]")
+  const results = document.querySelector<HTMLElement>("[data-catalog-results]")
+
+  const applyFilter = (filter: string | null) => {
+    cards.forEach((card) => {
+      const category = card.getAttribute("data-category")
+      if (filter === "all" || category === filter) {
+        card.removeAttribute("hidden")
+      } else {
+        card.setAttribute("hidden", "")
+      }
+    })
+  }
+
+  const updateResultsMinHeight = () => {
+    if (!results || cards.length === 0) return
+    results.style.minHeight = ""
+
+    const filters = ["all", ...Array.from(buttons)
+      .map((button) => button.getAttribute("data-filter"))
+      .filter((filter): filter is string => Boolean(filter) && filter !== "all")]
+
+    let tallestHeight = 0
+    const activeButton = document.querySelector('[data-filter][aria-pressed="true"]')
+    const activeFilter = activeButton?.getAttribute("data-filter") ?? "all"
+
+    filters.forEach((filter) => {
+      applyFilter(filter)
+      tallestHeight = Math.max(tallestHeight, results.offsetHeight)
+    })
+
+    applyFilter(activeFilter)
+    results.style.minHeight = `${tallestHeight}px`
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.getAttribute("data-filter")
+      buttons.forEach((item) => item.setAttribute("aria-pressed", "false"))
+      button.setAttribute("aria-pressed", "true")
+      applyFilter(filter)
+    })
+  })
+
+  updateResultsMinHeight()
+  window.addEventListener("resize", updateResultsMinHeight)
+</script>

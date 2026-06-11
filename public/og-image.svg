@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8f9fa"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#1a1a2e"/>
+  <text x="600" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="80" font-weight="700" fill="#1a1a2e">Cybotum</text>
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#6b7280">Websites, Apps, Dashboards &amp; SaaS MVPs</text>
+  <circle cx="600" cy="450" r="6" fill="#1a1a2e"/>
+  <rect x="0" y="626" width="1200" height="4" fill="#1a1a2e"/>
+</svg>

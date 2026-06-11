@@ -1,0 +1,320 @@
+---
+import Layout from "@/layouts/main.astro"
+import { HugeiconsIcon } from "@hugeicons/react"
+import Briefcase01Icon from "@hugeicons/core-free-icons/Briefcase01Icon"
+import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
+import CursorPointer01Icon from "@hugeicons/core-free-icons/CursorPointer01Icon"
+import DashboardSquare01Icon from "@hugeicons/core-free-icons/DashboardSquare01Icon"
+import Idea01Icon from "@hugeicons/core-free-icons/Idea01Icon"
+import Layers01Icon from "@hugeicons/core-free-icons/Layers01Icon"
+import MobileNavigator01Icon from "@hugeicons/core-free-icons/MobileNavigator01Icon"
+import Rocket01Icon from "@hugeicons/core-free-icons/Rocket01Icon"
+import ShoppingCart01Icon from "@hugeicons/core-free-icons/ShoppingCart01Icon"
+import UserGroupIcon from "@hugeicons/core-free-icons/UserGroupIcon"
+import WebProgrammingIcon from "@hugeicons/core-free-icons/WebProgrammingIcon"
+
+const introPoints = [
+  {
+    title: "Practical scope",
+    description: "Projects are shaped around what the business actually needs first.",
+    icon: Briefcase01Icon,
+  },
+  {
+    title: "Clear user experience",
+    description: "Interfaces stay clean, readable, and easy to use across devices.",
+    icon: CursorPointer01Icon,
+  },
+  {
+    title: "Fast delivery",
+    description: "Focused builds move quickly without adding unnecessary complexity.",
+    icon: Rocket01Icon,
+  },
+]
+
+const focusAreas = [
+  {
+    title: "Business Websites",
+    description:
+      "Clean, fast websites for companies, agencies, restaurants, clinics, and local brands.",
+    icon: WebProgrammingIcon,
+  },
+  {
+    title: "Landing Pages",
+    description:
+      "Focused single-page sites built to explain an offer clearly and convert visitors.",
+    icon: Layers01Icon,
+  },
+  {
+    title: "Web Apps",
+    description:
+      "Interactive products with practical workflows and a strong frontend foundation.",
+    icon: CursorPointer01Icon,
+  },
+  {
+    title: "Dashboards",
+    description:
+      "Admin panels and internal tools for reporting, operations, and day-to-day management.",
+    icon: DashboardSquare01Icon,
+  },
+  {
+    title: "SaaS MVPs",
+    description:
+      "Lean launch-ready products that help validate ideas before scaling further.",
+    icon: Rocket01Icon,
+  },
+  {
+    title: "E-commerce",
+    description:
+      "Online stores and product catalog experiences designed for usability and conversion.",
+    icon: ShoppingCart01Icon,
+  },
+  {
+    title: "Mobile App MVPs",
+    description:
+      "Mobile-first product concepts and prototypes for testing real demand early.",
+    icon: MobileNavigator01Icon,
+  },
+]
+
+const workingPrinciples = [
+  {
+    number: "01",
+    title: "Start with the real problem",
+    description:
+      "Understand the business need before deciding what to design or build.",
+  },
+  {
+    number: "02",
+    title: "Keep the first version focused",
+    description:
+      "Prioritize what helps users most instead of filling the product with extra features.",
+  },
+  {
+    number: "03",
+    title: "Design for everyday use",
+    description:
+      "Make the interface easy to scan, understand, and use on mobile and desktop.",
+  },
+  {
+    number: "04",
+    title: "Ship clean and iterate",
+    description:
+      "Launch a solid version first, then improve based on real feedback and usage.",
+  },
+]
+
+const beliefs = [
+  "Simple products are easier to use, maintain, and improve.",
+  "Fast performance supports better user experience, SEO, and trust.",
+  "Clear content helps people understand value and make decisions faster.",
+  "Mobile usability should be treated as a starting point, not an afterthought.",
+  "Every screen element should have a purpose and reduce confusion.",
+]
+
+const bestFitProjects = [
+  {
+    title: "Small businesses",
+    description: "Need a polished online presence without a heavy or overbuilt website.",
+    icon: Briefcase01Icon,
+  },
+  {
+    title: "Startup founders",
+    description: "Need a lean MVP to validate an idea before investing in a larger product.",
+    icon: Idea01Icon,
+  },
+  {
+    title: "Operations teams",
+    description: "Need dashboards or internal tools that replace manual workflows.",
+    icon: DashboardSquare01Icon,
+  },
+  {
+    title: "Local businesses",
+    description: "Need stronger visibility, better communication, and a cleaner digital presence.",
+    icon: UserGroupIcon,
+  },
+]
+---
+
+<Layout
+  seo={{
+    title: "About Cybotum | Practical Websites, Apps & Dashboards",
+    description:
+      "Learn about Cybotum's practical approach to building fast websites, web apps, SaaS MVPs, dashboards, e-commerce experiences, and mobile app MVPs.",
+    canonical: "/about",
+  }}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <HugeiconsIcon icon={Idea01Icon} size={14} />
+          About Cybotum
+        </span>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          Building useful digital products with a clear, focused approach.
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Cybotum helps businesses turn practical ideas into clean websites, web apps,
+          dashboards, and MVPs that are easy to understand and ready to grow.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/catalog"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Explore Catalog
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-3">
+        {introPoints.map((point) => (
+          <div class="rounded-2xl bg-muted/50 p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm">
+              <HugeiconsIcon icon={point.icon} size={18} />
+            </div>
+            <h2 class="mt-4 text-base font-semibold tracking-tight">{point.title}</h2>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{point.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">What Cybotum does</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          A focused catalog of products businesses often need.
+        </h2>
+        <p class="mt-3 text-base leading-7 text-muted-foreground">
+          The work stays centered on practical outcomes, clear structure, and simple delivery
+          decisions that move projects forward.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {focusAreas.map((area) => (
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={area.icon} size={18} />
+            </div>
+            <h3 class="mt-4 text-base font-semibold tracking-tight">{area.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{area.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="max-w-xl">
+          <span class="text-sm font-medium text-muted-foreground">How Cybotum works</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            A straightforward process that keeps the first version useful.
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            The goal is to reduce noise, avoid overbuilding, and launch something that solves the
+            right problem from the start.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {workingPrinciples.map((step) => (
+            <div class="rounded-2xl bg-muted/50 p-5">
+              <div class="text-sm font-semibold text-primary">{step.number}</div>
+              <h3 class="mt-2 text-base font-semibold tracking-tight">{step.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="max-w-xl">
+          <span class="text-sm font-medium text-muted-foreground">What Cybotum believes</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Practical principles that shape every project.
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            These are the standards behind the design, content, and product decisions across the
+            work.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {beliefs.map((belief) => (
+            <div class="flex items-start gap-3 rounded-2xl bg-muted/40 p-4">
+              <div class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-background text-primary shadow-sm">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} />
+              </div>
+              <p class="text-sm leading-6 text-muted-foreground">{belief}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">Best fit projects</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          Best suited for teams that want clarity and momentum.
+        </h2>
+        <p class="mt-3 text-base leading-7 text-muted-foreground">
+          Cybotum is a strong fit when the goal is to ship something clean, understandable, and
+          realistically scoped.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2">
+        {bestFitProjects.map((project) => (
+          <div class="rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={project.icon} size={18} />
+            </div>
+            <h3 class="mt-4 text-base font-semibold tracking-tight">{project.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 md:py-16">
+      <div class="rounded-3xl bg-muted/50 p-6 md:p-8">
+        <div class="max-w-2xl">
+          <span class="text-sm font-medium text-muted-foreground">Next step</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Have an idea, but not sure what to build first?
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            Start with the catalog or send a short message. Cybotum can help shape the simplest
+            useful version of your product before development begins.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/catalog"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Explore Catalog
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

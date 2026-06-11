@@ -1,0 +1,206 @@
+---
+import Layout from "@/layouts/main.astro"
+import { SITE } from "@/lib/site"
+import { HugeiconsIcon } from "@hugeicons/react"
+import type { IconSvgElement } from "@hugeicons/react"
+import ArrowRight01Icon from "@hugeicons/core-free-icons/ArrowRight01Icon"
+import CheckmarkCircle01Icon from "@hugeicons/core-free-icons/CheckmarkCircle01Icon"
+import GithubIcon from "@hugeicons/core-free-icons/GithubIcon"
+import Idea01Icon from "@hugeicons/core-free-icons/Idea01Icon"
+import Linkedin01Icon from "@hugeicons/core-free-icons/Linkedin01Icon"
+import Mail01Icon from "@hugeicons/core-free-icons/Mail01Icon"
+import NewTwitterIcon from "@hugeicons/core-free-icons/NewTwitterIcon"
+
+type SocialLink = {
+  href: string
+  label: string
+  icon: IconSvgElement
+}
+
+const contactOptions = [
+  {
+    title: "Email directly",
+    description: "The best option for project details, timelines, references, and initial goals.",
+    href: `mailto:${SITE.email}`,
+    label: SITE.email,
+    icon: Mail01Icon,
+  },
+  {
+    title: "Quick inquiry",
+    description: "Open a pre-addressed message when you want to start with a short project note.",
+    href: `mailto:${SITE.email}?subject=Project%20Inquiry%20for%20Cybotum`,
+    label: "Send Project Inquiry",
+    icon: Idea01Icon,
+  },
+  {
+    title: "Browse the catalog first",
+    description: "Use the catalog to identify the closest starting point before reaching out.",
+    href: "/catalog",
+    label: "Explore Catalog",
+    icon: ArrowRight01Icon,
+  },
+]
+
+const messageChecklist = [
+  "What you want to build and what it should help users do.",
+  "Who the product is for, whether customers, clients, or an internal team.",
+  "Any existing branding, copy, references, or examples you already have.",
+  "A rough idea of the timeline, priorities, or launch window.",
+]
+
+const socialLinks = [
+  SITE.social.twitter
+    ? { href: SITE.social.twitter, label: "Twitter", icon: NewTwitterIcon }
+    : null,
+  SITE.social.linkedin
+    ? { href: SITE.social.linkedin, label: "LinkedIn", icon: Linkedin01Icon }
+    : null,
+  SITE.social.github
+    ? { href: SITE.social.github, label: "GitHub", icon: GithubIcon }
+    : null,
+].filter((link): link is SocialLink => Boolean(link))
+---
+
+<Layout
+  seo={{
+    title: "Contact Cybotum | Start a Website, App or MVP Project",
+    description:
+      "Contact Cybotum to discuss a website, web app, dashboard, SaaS MVP, mobile app MVP, or e-commerce project.",
+    canonical: "/contact",
+  }}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <HugeiconsIcon icon={Mail01Icon} size={14} />
+          Contact
+        </span>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          Share the idea and we can shape the right starting point.
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Whether you need a website, dashboard, web app, or MVP, a clear message is enough to
+          begin the conversation.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="max-w-2xl">
+        <span class="text-sm font-medium text-muted-foreground">Ways to reach Cybotum</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+          Choose the simplest contact path for where you are now.
+        </h2>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {contactOptions.map((option) => (
+          <div class="flex flex-col rounded-2xl border border-border/70 bg-background p-5">
+            <div class="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
+              <HugeiconsIcon icon={option.icon} size={18} />
+            </div>
+            <h3 class="mt-4 text-base font-semibold tracking-tight">{option.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">{option.description}</p>
+            <div class="mt-6">
+              <a
+                href={option.href}
+                class="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+              >
+                {option.label}
+                <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-8 md:py-10">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="max-w-xl">
+          <span class="text-sm font-medium text-muted-foreground">What to include</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            A few details make the first reply much more useful.
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            Send a message directly to{" "}
+            <a
+              href={`mailto:${SITE.email}`}
+              class="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              {SITE.email}
+            </a>{" "}
+            and include any of the points below that you already know.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {messageChecklist.map((item) => (
+            <div class="flex items-start gap-3 rounded-2xl bg-muted/40 p-4">
+              <div class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-background text-primary shadow-sm">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} />
+              </div>
+              <p class="text-sm leading-6 text-muted-foreground">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {socialLinks.length > 0 && (
+      <section class="py-8 md:py-10">
+        <div class="max-w-2xl">
+          <span class="text-sm font-medium text-muted-foreground">Elsewhere</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Follow or message Cybotum through social channels.
+          </h2>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              <HugeiconsIcon icon={link.icon} size={16} />
+              <span>{link.label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="py-12 md:py-16">
+      <div class="rounded-3xl bg-muted/50 p-6 md:p-8">
+        <div class="max-w-2xl">
+          <span class="text-sm font-medium text-muted-foreground">Next step</span>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+            Start simple and explain the idea.
+          </h2>
+          <p class="mt-3 text-base leading-7 text-muted-foreground">
+            Cybotum can help decide whether the best next step is a landing page, full website,
+            dashboard, MVP, or a more custom direction.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href={`mailto:${SITE.email}`}
+            class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Email Cybotum
+          </a>
+          <a
+            href="/catalog"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Explore Catalog
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

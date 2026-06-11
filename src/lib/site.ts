@@ -1,10 +1,24 @@
 export const SITE = {
-  name: "Cybotum",
+  name: "AstroStarter",
   description:
     "We design and build modern websites, apps, and digital products for growing businesses.",
-  url: "https://cybotum.com",
+  url: "https://astrostarter.com",
   ogImage: "/og-image.svg",
-  email: "hello@cybotum.com",
+  email: "hello@astrostarter.com",
+  copy: {
+    footerDescription:
+      "We design and build modern websites, apps, and digital products for growing businesses.",
+    heroDescription:
+      "We help startups, creators, and businesses turn ideas into fast, beautiful, and scalable websites, apps, and digital experiences.",
+    catalogPreviewDescription:
+      "A glimpse of websites, apps, dashboards, and digital products AstroStarter can craft for brands, startups, and businesses.",
+    servicesIntro:
+      "Practical product services for businesses that want clarity, not noise.",
+    aboutIntro:
+      "AstroStarter helps businesses turn practical ideas into clean websites, web apps, dashboards, and MVPs that are easy to understand and ready to grow.",
+    contactIntro:
+      "Whether you need a website, dashboard, web app, or MVP, a clear message is enough to begin the conversation.",
+  },
   keywords: [
     "website development",
     "web app development",
@@ -17,10 +31,10 @@ export const SITE = {
     "digital agency",
   ],
   social: {
-    twitter: "https://x.com/cybotum",
-    instagram: "https://instagram.com/cybotum",
-    linkedin: "https://linkedin.com/company/cybotum",
-    github: "https://github.com/cybotum",
+    twitter: "https://x.com/astrostarter",
+    instagram: "https://instagram.com/astrostarter",
+    linkedin: "https://linkedin.com/company/astrostarter",
+    github: "https://github.com/astrostarter",
   },
 }
 
@@ -49,17 +63,20 @@ export const FOOTER_QUICK_LINKS = [
 ]
 
 export const FOOTER_SERVICES = [
-  { href: "/services", label: "Website Development" },
-  { href: "/services", label: "App Development" },
-  { href: "/services", label: "UI/UX Design" },
-  { href: "/services", label: "SEO Optimization" },
-  { href: "/services", label: "Branding" },
+  { href: "/catalog/business-website", label: "Business Websites" },
+  { href: "/catalog/saas-mvp", label: "SaaS MVPs" },
+  { href: "/catalog/admin-dashboard", label: "Dashboards" },
+  { href: "/catalog/mobile-app-mvp", label: "Mobile Apps" },
+  { href: "/catalog/ecommerce-website", label: "E-commerce" },
 ]
 
 export const FOOTER_RESOURCES = [
   { href: "/catalog", label: "Case Studies" },
-  { href: "#", label: "Blog" },
-  { href: "/#process", label: "Our Process" },
-  { href: "#", label: "FAQs" },
-  { href: "#", label: "Careers" },
+  { href: "/services", label: "Our Services" },
+  { href: "/sitemap", label: "Sitemap" },
+]
+
+export const FOOTER_LEGAL_LINKS = [
+  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
 ]

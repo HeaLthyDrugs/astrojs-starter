@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cybotum.com/sitemap-index.xml
+Sitemap: https://astrostarter.com/sitemap-index.xml

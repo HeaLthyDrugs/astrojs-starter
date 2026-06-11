@@ -1,4 +1,4 @@
-# Cybotum Astro Starter
+# Astro Starter Template
 
 A clean, SEO-ready Astro starter for agency sites, product studios, and digital product launches.
 
